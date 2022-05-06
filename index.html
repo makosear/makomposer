@@ -1,19 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
+    <title>Makomposer</title>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
-    <><select id="framework">
-        <option value="1">Makoto Naegi</option>
-        <option value="2">Kokichi Ouma</option>
-        <option value="3">Jataro Kemuri</option>
-        <option value="4">Keebo</option>
-    </select>
-    <p>hi 1.0</p>
-    <script src="/js/composer.js"></script>
+
+    
+
+    <select id="select" onchange="switchImage();"></select>
+
+
+    <img src="https://abimon.org/dr/busts/aoi/00.png" id="charImg" alt="blank" />
+
+    <script>
+        var imageList = new Array();
+
+        imageList[0] = new Image();
+        imageList[0].src = "https://abimon.org/dr/busts/aoi/00.png";
+        imageList[1] = new Image;
+        imageList[1].src = "https://abimon.org/dr/busts/akane/00.png";
+        imageList[2] = new Image;
+        imageList[2].src = "https://ik.imagekit.io/drrp/sprites/angie/00.png";
+
+        var select = document.getElementById("select"),
+
+            drnames = {
+                "aoi": "Aoi Asahina",
+                "akane": "Akane Owari",
+                "angie": "Angie Yonaga"
+            },
+
+            arr = [],
+
+            i = 0;
+
+        for (var x in drnames) {
+            arr[i] = drnames[x];
+            console.log(arr[i]);
+            i++;
+        }
+
+        /*arr = ["Aoi Asahina", "Akane Owari", "Angie Yonaga"];*/
+
+
+        for (var i = 0; i < arr.length; i++) {
+            var option = document.createElement("OPTION"),
+                txt = document.createTextNode(arr[i]);
+            option.appendChild(txt);
+            option.setAttribute("value", arr[i]);
+            select.appendChild(option);
+
+        }
+
+        function switchImage() {
+            var index = document.getElementById("select").selectedIndex;
+            charImg = document.getElementById("charImg");
+            charImg.src = imageList[index].src;
+        }
+    </script>
+
 </body>
+
 </html>
